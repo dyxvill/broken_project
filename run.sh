@@ -19,9 +19,9 @@ users=()
 
 # "read" читает текст, который вы запишете "во время" работы скрипта!! по сути input
 # см. reader.sh
-while [[ read -r users.txt ]]; do
+while read -r user; do
 	users+=("$user")
-done
+done < users.txt
 
 echo "Users count: ${#users[@]}"
 
@@ -48,8 +48,8 @@ for f in "${txt_files[@]}"; do
   echo "Lines: $(wc -l < "$f")"
 done
 
-./scripts/calc.sh 5 10
+bash scripts/calc.sh 5 10
 
-./scripts/cleanup.sh
+bash scripts/cleanup.sh
 
 echo "Done."
